@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue学习</title>
+</head>
+<style>
+    .text {
+        margin-top: 40px;
+        margin-left: 10px;
+        color: #262729;
+        font-size: 28px;
+        font-weight: 700;
+        font-family: Helvetica;
+    }
+
+    .text1 {
+        margin-bottom: 10px;
+        margin-left: 10px;
+        color: #262729;
+        font-size: 16px;
+        font-family: Helvetica;
+    }
+
+
+    .i {
+        border-radius: 19px;
+        color: #8C8F92;
+        background-color: #EFF0F3;
+        width: 98px;
+        margin: 5px 10px;
+        text-align: center;
+        padding: 5px 0;
+    }
+
+    .ii {
+        border-radius: 19px;
+        color: white;
+        background-color: #F85A59;
+        width: 98px;
+        margin: 5px 10px;
+        text-align: center;
+        padding: 5px 0;
+    }
+
+    .text2 {
+        border-radius: 25px;
+        background-color: #F85A59;
+        padding: 10px 0;
+        margin: 50px 10px 10px 10px;
+        color: white;
+        text-align: center;
+    }
+
+    .text2-1{
+        background-color: #EFF0F3;
+        color:  #8C8F92;
+    }
+    
+
+    .text3 {
+        font-size: 12px;
+        color: #A2A5A7;
+        text-align: center;
+
+    }
+</style>
+
+<body>
+    <div id='vue-1'>
+        <div class="text">
+            {{text}}
+        </div>
+        <div class="text1">
+            {{text1}}
+        </div>
+        <div style="margin-left: 15; ">
+            <div v-for='(i,xb) in xunhuan' v-on:click='dj(xb)' v-bind:class="[xhlist.indexOf(xb)==-1?'i':'ii']" v-bind:style="{display:'inline-block'}">
+                {{i}}
+            </div>
+        </div>
+        <div  v-on:click='anNiu' v-bind:class="['text2',xhlist.length==0 ? 'text2-1':'']">
+            {{text2}}
+        </div>
+        <div class="text3">
+            {{text3}}
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#vue-1',
+            data: {
+                text: '开启个性化定制',
+                text1: '你的兴趣频道',
+                xhlist: [],
+                xunhuan: [
+                    '科技',
+                    '健康',
+                    '直播',
+                    '医疗',
+                    '设计',
+                    '军事',
+                    '生活',
+                    '历史',
+                    '体育',
+                    '时尚',
+                    '健康',
+                    '新时代',
+                    '美食',
+                    '法律',
+                    '小说',
+                    '国庆节',
+                    '汽车',
+                    '情感',
+                    'NBA',
+                    '育儿',
+                    '独家',
+                ],
+                text2: '选好了进入主页',
+                text3: '已有账户，微信登录',
+            },
+            methods: {
+                dj: function (xb) {
+                    if (this.xhlist.indexOf(xb)==-1 ){
+                        this.xhlist.push(xb);
+                    }else{
+                        this.xhlist.splice(this.xhlist.indexOf(xb),1)
+                    }
+                },
+                anNiu:function(){
+                    if(this.xhlist.length == 0){
+                        console.log('请选择');
+                    }else{
+                        alert('成功');
+                    }
+                }
+
+            }
+
+
+        });
+    </script>
+</body>
+
+</html>
